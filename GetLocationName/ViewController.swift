@@ -46,7 +46,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
             
-            showAlert(withTitle: "Error", message: "User acceptence failed, please try again!", andActions: [settingsAction, cancelAction])
+            showAlert(withTitle: "Error", message: "Please allow us to determine the user location to get a better experience.", andActions: [settingsAction, cancelAction])
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
         @unknown default:
@@ -63,7 +63,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
             else if let placemarks = placemarks
             {
-                self.showAlert(withTitle: "Locatio Name", message: "Place Name: \(placemarks[0].name!), \(placemarks[0].administrativeArea!)")
+                self.showAlert(withTitle: "Your Current Location", message: "Location Address: \(placemarks[0].name!), \(placemarks[0].administrativeArea!)")
                 
                 for placeMark in placemarks{
                     let address = [
