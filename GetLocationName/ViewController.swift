@@ -12,6 +12,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager: CLLocationManager!
     
+    var lat = 0.0
+    var long = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -61,9 +64,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if let error = error {
                 self.showAlert(withTitle: "Error", message: error.localizedDescription)
             }
+            
             else if let placemarks = placemarks
             {
-                self.showAlert(withTitle: "Your Current Location", message: "Location Address: \(placemarks[0].name!), \(placemarks[0].administrativeArea!)")
+                self.showAlert(withTitle: "\nYour Current Location", message: "Location Address: \(placemarks[0].name!), \(placemarks[0].administrativeArea!)\n\nlatitude: \(self.lat)\nlatitude:\(self.long)")
                 
                 for placeMark in placemarks{
                     let address = [
@@ -101,6 +105,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else
+        {
+            return
+        }
+        
+        lat = locValue.latitude
+        long = locValue.longitude
+        
         if let location = locations.last{
             locationManager.stopUpdatingLocation()
             getAddress(fromLocation: location)
