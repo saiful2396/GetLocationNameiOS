@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  GetLocationName
 //
-//  Created by Omar Sharif on 18/5/23.
+//  Created by Saiful Islam on 18/5/23.
 //
 
 import UIKit

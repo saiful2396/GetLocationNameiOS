@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>use location for better experience</string>
 </dict>
 </plist>
